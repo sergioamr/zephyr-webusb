@@ -63,6 +63,7 @@ var serial = {};
   };
 
   serial.Port.prototype.send = function(data) {
+    console.log("Transfer out: ", data);
     return this.device_.transferOut(2, data);
   };
 })();

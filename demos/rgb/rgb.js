@@ -15,8 +15,11 @@
         connectButton.textContent = 'Disconnect';
 
         port.onReceive = data => {
-          let textDecoder = new TextDecoder();
-          console.log(textDecoder.decode(data));
+          var jsonObj = [];
+          for (var i = 0; i < data.byteLength; ++i) {
+            jsonObj.push(data.getUint8(i));
+          }
+          console.log("Transfer In: ", jsonObj);
         }
         port.onReceiveError = error => {
           console.error(error);
